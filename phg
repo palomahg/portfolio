@@ -1,18 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #333; }
-        a { color: #007bff; text-decoration: none; }
-    </style>
-</head>
-<body>
-    <h1>¡Hola, soy [Tu Nombre]!</h1>
-    <p>Bienvenido a mi portafolio.</p>
-    <a href="https://www.linkedin.com/in/tuperfil">Visita mi LinkedIn</a>
-</body>
-</html>
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin } from "lucide-react";
+
+const projects = [
+  {
+    title: "Project 1",
+    description: "A brief description of this project and what it does.",
+    link: "#",
+  },
+  {
+    title: "Project 2",
+    description: "A brief description of this project and what it does.",
+    link: "#",
+  },
+];
+
+export default function Portfolio() {
+  return (
+    <div className="max-w-4xl mx-auto p-6 text-center">
+      <h1 className="text-4xl font-bold mb-4">Paloma HG</h1>
+      <p className="text-lg mb-6">
+        Communications Specialist | Venture Capital | Sustainability
+      </p>
+      <div className="flex justify-center gap-4 mb-8">
+        <Button asChild>
+          <a href="https://github.com/palomahg" target="_blank" rel="noopener noreferrer">
+            <Github className="mr-2" /> GitHub
+          </a>
+        </Button>
+        <Button asChild>
+          <a href="https://www.linkedin.com/in/palomahg" target="_blank" rel="noopener noreferrer">
+            <Linkedin className="mr-2" /> LinkedIn
+          </a>
+        </Button>
+      </div>
+      <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {projects.map((project, index) => (
+          <Card key={index} className="p-4">
+            <CardContent>
+              <h3 className="text-xl font-semibold">{project.title}</h3>
+              <p className="text-sm text-gray-600 mb-2">{project.description}</p>
+              <Button asChild>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">View Project</a>
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
